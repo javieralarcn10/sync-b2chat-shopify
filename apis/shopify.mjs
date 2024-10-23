@@ -53,7 +53,7 @@ export async function getCustomers() {
         cursor = response.data.data.customers.pageInfo.endCursor;
       }
     } catch (error) {
-      console.log("Error getting customers from Shopify: ", error);
+      console.error("Error getting customers from Shopify: ", error);
       throw error;
     }
   }
@@ -71,12 +71,11 @@ export async function getCustomer({ customerId }) {
       },
       data: {
         query: `{
-					customer(id:"${customerId}"){
-							email
-							phone
-						}
-					}
-				}`,
+                  customer(id:"${customerId}"){
+                      email
+                      phone
+                  }
+                }`,
       },
     });
 
@@ -89,7 +88,7 @@ export async function getCustomer({ customerId }) {
       },
     };
   } catch (error) {
-    console.log("Error getting customer from Shopify: ", error);
+    console.error("Error getting customer from Shopify: ", error);
     throw error;
   }
 }
