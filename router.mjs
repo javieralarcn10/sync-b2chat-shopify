@@ -5,7 +5,7 @@ import { importQueue } from './queues/importQueue.mjs';
 const router = express.Router()
 
 //WEBHOOK CUSTOMER CREATED AND UPDATED
-router.get('/wehbooks/customer', (req, res) => {
+router.post('/wehbooks/customer', (req, res) => {
     const customer = req.body;
     contactQueue.add(customer);
 
@@ -13,7 +13,7 @@ router.get('/wehbooks/customer', (req, res) => {
 })
 
 //WEBHOOK CUSTOMER TAG CREATED
-router.get('/webhooks/tags/add', (req, res) => {
+router.post('/webhooks/tags/add', (req, res) => {
     const { customerId, tags } = req.body;
     tagsQueue.add({ customerId, tags, type: 'add' });
 
@@ -21,7 +21,7 @@ router.get('/webhooks/tags/add', (req, res) => {
 })
 
 //WEBHOOK CUSTOMER TAG REMOVED
-router.get('/webhooks/tags/remove', (req, res) => {
+router.post('/webhooks/tags/remove', (req, res) => {
     const { customerId, tags } = req.body;
     tagsQueue.add({ customerId, tags, type: 'remove' });
 
@@ -29,7 +29,7 @@ router.get('/webhooks/tags/remove', (req, res) => {
 })
 
 //WEBHOOK APP INSTALLED
-router.get('/webhooks/app/installed', (req, res) => {
+router.post('/webhooks/app/installed', (req, res) => {
     const { shop, access_token } = req.query;
     importQueue.add({ shop, token: access_token });
 
