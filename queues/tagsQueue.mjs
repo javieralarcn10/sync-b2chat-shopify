@@ -23,7 +23,7 @@ export const tagsQueue = new Queue("tagsQueue", {
 tagsQueue.process(async function (job) {
   const { customerId, tags, type, shop, token } = job.data;
 
-  const customerData = await getCustomer({ customerId, shop, token });
+  const customerData = await getCustomer({ customerId });
   const contactInB2Chat = await getContact({ customer: customerData });
   const id = contactInB2Chat?.contact_id;
 
