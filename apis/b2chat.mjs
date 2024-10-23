@@ -121,7 +121,7 @@ async function addTagsToContactInB2Chat({ customer, tags, token }) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      data: tags,
+      data: tags.map((tag) => ({ name: tag })),
     });
     const { data } = response;
     return data;
@@ -139,7 +139,7 @@ async function removeTagsFromContactInB2Chat({ customer, tags, token }) {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      data: tags,
+      data: tags.map((tag) => ({ name: tag })),
     });
     const { data } = response;
     return data;
