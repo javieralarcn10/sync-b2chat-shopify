@@ -47,6 +47,7 @@ contactQueue.process(async function (job) {
       skip_errors: true,
       contact: {
         fullname: limitString(`${customer.first_name} ${customer?.last_name}`),
+        fullName: limitString(`${customer.first_name} ${customer?.last_name}`), //Required for update full name (error b2chat)
         mobile: customer.phone?.replace(/\s+/g, ""),
         email: limitString(customer.email),
         identification: limitString(customer.id),

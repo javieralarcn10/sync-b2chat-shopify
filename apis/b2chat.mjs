@@ -82,10 +82,10 @@ async function getContactInB2Chat({ customer, token }) {
               field: "mobile",
               value: customer?.contact?.mobile,
             },
-            {
-              field: "email",
-              value: customer?.contact?.email,
-            },
+            // {
+            //   field: "email",
+            //   value: customer?.contact?.email,
+            // }, THIS NOT WORK IN B2CHAT
           ],
         },
       },
